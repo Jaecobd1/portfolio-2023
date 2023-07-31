@@ -1,6 +1,6 @@
 import { Button, Input, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { motion, useAnimationFrame, useTime, useTransform } from 'framer-motion'
+import { motion, useAnimationFrame } from 'framer-motion'
 import { useRef } from 'react'
 
 function Hero() {
@@ -28,6 +28,7 @@ function Hero() {
       Math.sin(time / (languagesAndFrameworks.length * 200)) *
         (20.45 * languagesAndFrameworks.length) -
       20.45 * languagesAndFrameworks.length
+    // @ts-ignore
     ref.current.style.transform = `translateY(${y}px)`
   })
 

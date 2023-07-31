@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion'
-import { Button, MantineProvider } from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
 import Work from './components/Work'

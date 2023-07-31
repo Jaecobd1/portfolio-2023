@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { Drawer, Button } from '@mantine/core'
+import { Drawer } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
 function Nav() {

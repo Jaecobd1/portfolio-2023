@@ -1,0 +1,5 @@
+@layer components {
+  .navLinkActive {
+    @apply text-orange-400 underline;
+  }
+}

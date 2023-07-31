@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navLinkActive {
+    @apply text-orange-400 underline underline-offset-2;
+  }
+  .navLinkUnActive {
+    @apply text-white hover:text-orange-400;
+  }
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}

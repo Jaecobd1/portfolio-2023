@@ -1,7 +1,8 @@
 import { Button, Input, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { motion, useAnimationFrame } from 'framer-motion'
+import { motion, useAnimationFrame, useScroll } from 'framer-motion'
 import { useRef } from 'react'
+import HeroThreeJS from './HeroThreeJS'
 
 function Hero() {
   const languagesAndFrameworks = [
@@ -36,20 +37,24 @@ function Hero() {
   const handleSubmit = () => {
     close()
   }
+  const { scrollYProgress } = useScroll()
 
   return (
     <div className="bg-slate-800 min-h-screen relative" id="home">
       <motion.div
-        className="flex absolute top-0 bottom-0 right-0 items-center justify-end mr-12"
+        className="flex absolute z-40 top-0 bottom-0 right-0 items-center justify-between gap-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.5, duration: 1.5 } }}
       >
-        <div className="flex flex-col justify-between items-start">
+        <div className=" w-1/2 h-full ">
+          <HeroThreeJS scroll={scrollYProgress} />
+        </div>
+        <div className="flex flex-col justify-between items-start md:mr-4 mr-2">
           <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black">
             Hi, I'm <span className="text-orange-400">Jake</span>
           </p>
           <motion.div
-            className="flex items-center justify-between gap-2"
+            className="flex md:items-center items-start justify-between gap-2 md:flex-row flex-col"
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
@@ -105,7 +110,7 @@ function Hero() {
           </form>
         </Modal.Body>
       </Modal>
-      <motion.div className="flex w-full h-screen items-center flex-col justify-end bg-gradient-to-b from-indigo-600 to-indigo-900"></motion.div>
+      <motion.div className="flex w-full h-screen items-start justify-center flex-col  bg-gradient-to-b from-indigo-600 to-indigo-900"></motion.div>
     </div>
   )
 }

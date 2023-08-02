@@ -5,7 +5,7 @@ import Work from './components/Work'
 import Education from './components/Education'
 function App() {
   return (
-    <MantineProvider>
+    <MantineProvider withNormalizeCSS>
       <Nav />
       <Hero />
       <Work />

@@ -45,7 +45,7 @@ function Nav() {
           </a>
         </div>
       </Drawer>
-      <div className="flex w-full sticky top-0 z-10 bg-slate-800 ">
+      <div className="flex w-full sticky top-0 z-50 bg-slate-800 ">
         <motion.div
           className="bg-slate-800 h-10 items-center flex justify-between w-full "
           initial={{ scale: 0 }}

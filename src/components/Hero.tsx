@@ -1,8 +1,9 @@
 import { Button, Input, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { motion, useAnimationFrame } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useAnimation, useAnimationFrame } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import HeroThreeJS from './HeroThreeJS'
+import { useInView } from 'react-intersection-observer'
 
 function Hero() {
   const languagesAndFrameworks = [
@@ -38,6 +39,28 @@ function Hero() {
     close()
   }
 
+  const text = ' Jake'
+
+  const ctrls = useAnimation()
+
+  const { ref: viewRef, inView } = useInView({
+    threshold: 0.2,
+  })
+
+  useEffect(() => {
+    if (inView) {
+      ctrls.start('visible')
+    }
+    if (!inView) {
+      ctrls.start('hidden')
+    }
+  }, [inView, ctrls])
+
+  const wordAnimation = {
+    hidden: {},
+    visible: {},
+  }
+
   return (
     <div className="bg-slate-800 min-h-screen relative" id="home">
       <motion.div
@@ -45,12 +68,42 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.5, duration: 1.5 } }}
       >
-        <div className=" w-1/2 h-full ">
+        <div className=" md:w-1/2 h-full ">
           <HeroThreeJS />
         </div>
-        <div className="flex flex-col justify-between items-start md:mr-4 mr-2">
+        <div className="flex flex-col justify-between items-start md:mr-4 mr-2 w-1/2">
           <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black">
-            Hi, I'm <span className="text-orange-400">Jake</span>
+            Hi, I'm
+            {text.split('').map((word, index) => {
+              return (
+                <motion.span
+                  className="text-orange-400"
+                  initial="hidden"
+                  key={index}
+                  animate={ctrls}
+                  variants={wordAnimation}
+                  ref={viewRef}
+                >
+                  {word.split('').map((char, index) => {
+                    return (
+                      <motion.span
+                        key={char + '-' + index}
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                          transition: {
+                            delay: (1 + index) * 0.5,
+                          },
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    )
+                  })}
+                </motion.span>
+              )
+            })}
           </p>
           <motion.div
             className="flex md:items-center items-start justify-between gap-2 md:flex-row flex-col"

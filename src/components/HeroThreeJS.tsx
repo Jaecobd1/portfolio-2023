@@ -1,21 +1,11 @@
 import { Canvas } from '@react-three/fiber'
 import Desk from './Desk'
 import Computer from './Computer'
-import {
-  GizmoHelper,
-  GizmoViewport,
-  Html,
-  Image,
-  OrbitControls,
-  PerspectiveCamera,
-} from '@react-three/drei'
-import { Group } from 'three'
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion-3d'
-import { MotionValue } from 'framer-motion'
+import { Image, OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import { useRef } from 'react'
 import screenShot from '/Screen.png'
 
-function HeroThreeJS({ scroll }: { scroll: MotionValue<number> }) {
+function HeroThreeJS() {
   const cameraRef = useRef(null)
 
   return (

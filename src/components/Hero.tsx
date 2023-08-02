@@ -1,6 +1,6 @@
 import { Button, Input, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { motion, useAnimationFrame, useScroll } from 'framer-motion'
+import { motion, useAnimationFrame } from 'framer-motion'
 import { useRef } from 'react'
 import HeroThreeJS from './HeroThreeJS'
 
@@ -37,7 +37,6 @@ function Hero() {
   const handleSubmit = () => {
     close()
   }
-  const { scrollYProgress } = useScroll()
 
   return (
     <div className="bg-slate-800 min-h-screen relative" id="home">
@@ -47,7 +46,7 @@ function Hero() {
         animate={{ opacity: 1, transition: { delay: 0.5, duration: 1.5 } }}
       >
         <div className=" w-1/2 h-full ">
-          <HeroThreeJS scroll={scrollYProgress} />
+          <HeroThreeJS />
         </div>
         <div className="flex flex-col justify-between items-start md:mr-4 mr-2">
           <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black">

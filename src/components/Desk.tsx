@@ -1,5 +1,6 @@
 import { useGLTF } from '@react-three/drei'
 
+// @ts-ignore
 export default function Desk(props) {
   const { scene } = useGLTF(
     'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/desk/model.gltf'

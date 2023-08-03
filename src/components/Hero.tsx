@@ -1,11 +1,18 @@
 import { Button, Input, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { motion, useAnimation, useAnimationFrame } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import {
+  motion,
+  useAnimation,
+  useAnimationFrame,
+  useMotionValueEvent,
+  useScroll,
+} from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import HeroThreeJS from './HeroThreeJS'
 import { useInView } from 'react-intersection-observer'
 
 function Hero() {
+  const [scroll, setScroll] = useState<number>()
   const languagesAndFrameworks = [
     { value: 'JavaScript', label: 'JavaScript' },
     { value: 'TypeScript', label: 'TypeScript' },
@@ -61,6 +68,12 @@ function Hero() {
     visible: {},
   }
 
+  const { scrollYProgress } = useScroll()
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    setScroll(latest)
+  })
+
   return (
     <div className="bg-slate-800 min-h-screen relative" id="home">
       <motion.div
@@ -69,7 +82,10 @@ function Hero() {
         animate={{ opacity: 1, transition: { delay: 0.5, duration: 1.5 } }}
       >
         <div className=" md:w-1/2 h-full ">
-          <HeroThreeJS />
+          <HeroThreeJS
+            //@ts-ignore
+            scrollYProgress={scroll}
+          />
         </div>
         <div className="flex flex-col justify-between items-start md:mr-4 mr-2 w-1/2">
           <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black">

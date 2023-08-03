@@ -1,9 +1,8 @@
 import { useGLTF } from '@react-three/drei'
-
 //@ts-ignore
-export default function Computer(props) {
+export default function Book(props) {
   const { scene } = useGLTF(
-    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf'
+    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/book/model.gltf'
   )
   return <primitive object={scene} {...props} />
 }

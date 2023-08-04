@@ -32,16 +32,16 @@ function Nav() {
             Portfolio
           </a>
           <a
-            href="#education"
+            href="#summary"
             onClick={() => {
-              setSelected('education')
+              setSelected('summary')
               close()
             }}
             className={
-              selected === 'education' ? 'navLinkActive' : 'text-slate-800'
+              selected === 'summary' ? 'navLinkActive' : 'text-slate-800'
             }
           >
-            Education
+            Summary
           </a>
         </div>
       </Drawer>
@@ -75,13 +75,13 @@ function Nav() {
               Portfolio
             </a>
             <a
-              href="#education"
-              onClick={() => setSelected('education')}
+              href="#summary"
+              onClick={() => setSelected('summary')}
               className={
-                selected === 'education' ? 'navLinkActive' : 'text-white'
+                selected === 'summary' ? 'navLinkActive' : 'text-white'
               }
             >
-              Education
+              Summary
             </a>
           </div>
           <div className="md:hidden flex mr-2 text-white">

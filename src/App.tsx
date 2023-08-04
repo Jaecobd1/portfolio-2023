@@ -1,15 +1,15 @@
 import { MantineProvider } from '@mantine/core'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
-import Work from './components/Work'
-import Education from './components/Education'
+import Portfolio from './components/Portfolio'
+import Summary from './components/Summary'
 function App() {
   return (
     <MantineProvider withNormalizeCSS>
       <Nav />
       <Hero />
-      <Work />
-      <Education />
+      <Portfolio />
+      <Summary />
     </MantineProvider>
   )
 }

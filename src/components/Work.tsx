@@ -7,7 +7,7 @@ import chatFish from '/chatFish.png'
 function Work() {
   return (
     <>
-      <div id="work"></div>
+      <div id="portfolio"></div>
 
       <div className="bg-gradient-to-b from-indigo-900 to-white min-h-screen text-white">
         <div className="flex flex-col p-12 ">

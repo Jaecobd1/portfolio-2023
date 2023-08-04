@@ -22,14 +22,14 @@ function Nav() {
             Home
           </a>
           <a
-            href="#work"
+            href="#portfolio"
             onClick={() => {
-              setSelected('work')
+              setSelected('portfolio')
               close()
             }}
             className={selected === 'work' ? 'navLinkActive' : 'text-slate-800'}
           >
-            Work
+            Portfolio
           </a>
           <a
             href="#education"
@@ -66,11 +66,13 @@ function Nav() {
               Home
             </a>
             <a
-              href="#work"
-              onClick={() => setSelected('work')}
-              className={selected === 'work' ? 'navLinkActive' : 'text-white'}
+              href="#portfolio"
+              onClick={() => setSelected('portfolio')}
+              className={
+                selected === 'portfolio' ? 'navLinkActive' : 'text-white'
+              }
             >
-              Work
+              Portfolio
             </a>
             <a
               href="#education"

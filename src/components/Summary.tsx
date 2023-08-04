@@ -30,14 +30,14 @@ function Summary() {
     },
   ]
   return (
-    <div id="summary" className="h-screen bg-slate-900 text-white p-12">
+    <div id="summary" className="min-h-screen bg-slate-900 text-white p-12">
       {/* Insert Education Here */}
       <div className="flex flex-col gap-4">
         <h2 className="text-6xl mt-12">Summary</h2>
 
         <div className="flex flex-col">
           <h3 className="text-2xl">Education</h3>
-          <div className="w-full flex justify-evenly md:flex-row flex-col">
+          <div className="w-full flex justify-evenly md:flex-row flex-col gap-6 mt-12 items-center">
             {education.map((school) => (
               <div className="flex flex-col gap-2 w-64 rounded-xl shadow-lg bg-white text-black p-4 ring-slate-300">
                 <h4 className="text-lg underline h-12">{school.school}</h4>

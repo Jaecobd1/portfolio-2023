@@ -38,13 +38,22 @@ function Summary() {
     default: {
       scale: 1,
     },
-    otherHovered: {
+    one: {
+      scale: 0.75,
+      transistion: {
+        type: 'interia',
+        velocity: 50,
+        delay: 1,
+        duration: 1.5,
+      },
+    },
+    further: {
       scale: 0.5,
       transistion: {
         type: 'interia',
         velocity: 50,
         delay: 1,
-        duration: 1,
+        duration: 1.5,
       },
     },
   }
@@ -56,10 +65,10 @@ function Summary() {
 
         <div className="flex flex-col">
           <h3 className="text-2xl">Education</h3>
-          <div className="w-full flex justify-evenly md:flex-row flex-col gap-6 mt-12 items-center">
+          <div className="w-full flex justify-evenly md:flex-row flex-col gap-12 mt-24 items-center">
             {education.map((school, index) => (
               <motion.div
-                className="flex flex-col gap-2 w-96 h-72 rounded-xl shadow-lg bg-white text-black p-4 ring-slate-300"
+                className="flex flex-col gap-2 md:w-96 w-52  md:h-72 rounded-xl shadow-lg bg-white text-black p-4 ring-slate-300"
                 whileHover={{ scale: 1.5 }}
                 onHoverStart={() => {
                   setHovered(index)
@@ -72,7 +81,11 @@ function Summary() {
                 variants={educationVarients}
                 initial="default"
                 animate={
-                  isHovering && hovered !== index ? 'otherHovered' : 'default'
+                  isHovering && hovered !== index
+                    ? hovered - 1 === index || hovered + 1 === index
+                      ? 'one'
+                      : 'further'
+                    : 'default'
                   // hovered !== index || hovered === -1
                   //   ? 'otherHovered'
                   //   : 'default'

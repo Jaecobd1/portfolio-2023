@@ -1,7 +1,11 @@
 import { Loader } from '@mantine/core'
 import ivyTech from '/Ivy-tech.png'
 import iupui from '/iupui.png'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 function Summary() {
+  const [hovered, setHovered] = useState(-1)
+  const [isHovering, setIsHovering] = useState(false)
   const education = [
     {
       school: 'Ivy Tech',
@@ -29,6 +33,21 @@ function Summary() {
       deansList: true,
     },
   ]
+
+  const educationVarients = {
+    default: {
+      scale: 1,
+    },
+    otherHovered: {
+      scale: 0.5,
+      transistion: {
+        type: 'interia',
+        velocity: 50,
+        delay: 1,
+        duration: 1,
+      },
+    },
+  }
   return (
     <div id="summary" className="min-h-screen bg-slate-900 text-white p-12">
       {/* Insert Education Here */}
@@ -38,8 +57,27 @@ function Summary() {
         <div className="flex flex-col">
           <h3 className="text-2xl">Education</h3>
           <div className="w-full flex justify-evenly md:flex-row flex-col gap-6 mt-12 items-center">
-            {education.map((school) => (
-              <div className="flex flex-col gap-2 w-64 rounded-xl shadow-lg bg-white text-black p-4 ring-slate-300">
+            {education.map((school, index) => (
+              <motion.div
+                className="flex flex-col gap-2 w-96 h-72 rounded-xl shadow-lg bg-white text-black p-4 ring-slate-300"
+                whileHover={{ scale: 1.5 }}
+                onHoverStart={() => {
+                  setHovered(index)
+                  setIsHovering(true)
+                }}
+                onHoverEnd={() => {
+                  setHovered(-1)
+                  setIsHovering(false)
+                }}
+                variants={educationVarients}
+                initial="default"
+                animate={
+                  isHovering && hovered !== index ? 'otherHovered' : 'default'
+                  // hovered !== index || hovered === -1
+                  //   ? 'otherHovered'
+                  //   : 'default'
+                }
+              >
                 <h4 className="text-lg underline md:h-12">{school.school}</h4>
                 <div className="h-6">
                   {school.deansList && (
@@ -75,7 +113,7 @@ function Summary() {
                     </div>
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

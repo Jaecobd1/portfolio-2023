@@ -33,7 +33,7 @@ function About() {
               ease: 'backOut',
               duration: 0.5,
             }}
-            className="text-2xl flex flex-col gap-12 items-center p-6 text-slate-900 Mask"
+            className="md:text-2xl flex-col gap-12 items-center p-6 text-slate-900 Mask md:flex hidden"
           >
             <span
               onMouseEnter={() => setIsHovered(true)}
@@ -90,7 +90,7 @@ function About() {
           </motion.div>
         </div>
 
-        <div className="text-2xl flex flex-col gap-12  items-center p-6 md:text-slate-500 ">
+        <div className="md:text-2xl flex flex-col gap-12  items-center p-6 md:text-slate-500 ">
           <span>
             As a child, I found inspiration in web-based games and the desire to
             create my own games and apps fueled my journey into web development.

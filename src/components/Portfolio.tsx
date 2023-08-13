@@ -33,7 +33,7 @@ function Portfolio() {
     <>
       <div id="portfolio"></div>
 
-      <div className="bg-gradient-to-b from-indigo-900 to-slate-900 min-h-screen text-white">
+      <div className="bg-gradient-to-b to-indigo-900 from-slate-900 min-h-screen text-white">
         <div className="flex flex-col p-12 ">
           {/* <WordWrapAnimation word="Portfolio" length={-72.95} />
            */}

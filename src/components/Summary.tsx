@@ -25,6 +25,15 @@ function Summary() {
     },
     {
       school: 'Indiana University Purdue University Indianapolis',
+      major: 'Multiplatform Application Development',
+      degree: 'Certification',
+      year: 'Fall 2023',
+      image: iupui,
+      gpa: '3.9',
+      deansList: true,
+    },
+    {
+      school: 'Indiana University Purdue University Indianapolis',
       major: 'Informatics',
       degree: 'Bachelors',
       year: 'Spring 2024',
@@ -59,7 +68,10 @@ function Summary() {
     },
   }
   return (
-    <div id="summary" className="min-h-screen bg-slate-900 text-white p-12">
+    <div
+      id="summary"
+      className="min-h-screen bg-gradient-to-b from-indigo-900 to-slate-900 text-white p-12"
+    >
       {/* Insert Education Here */}
       <div className="flex flex-col gap-4">
         {/* <WordWrapAnimation word="Summary" length={-7.95} /> */}

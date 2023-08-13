@@ -30,6 +30,6 @@ canvas {
   mask-image: url('/mask.svg');
   mask-repeat: no-repeat;
   mask-size: 40px;
-  background: linear-gradient(0deg, #e27f0f 0%, #da9007 100%);
+  background: linear-gradient(90deg, #e27f0f 0%, #efc880 100%);
   color: white;
 }

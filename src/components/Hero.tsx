@@ -2,14 +2,13 @@ import { Button, Input, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
   motion,
-  useAnimation,
   useAnimationFrame,
   useMotionValueEvent,
   useScroll,
 } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import HeroThreeJS from './HeroThreeJS'
-import { useInView } from 'react-intersection-observer'
+import jake from '/Jake.svg'
 
 function Hero() {
   const [scroll, setScroll] = useState<number>()
@@ -46,28 +45,6 @@ function Hero() {
     close()
   }
 
-  const text = ' Jake'
-
-  const ctrls = useAnimation()
-
-  const { ref: viewRef, inView } = useInView({
-    threshold: 0.2,
-  })
-
-  useEffect(() => {
-    if (inView) {
-      ctrls.start('visible')
-    }
-    if (!inView) {
-      ctrls.start('hidden')
-    }
-  }, [inView, ctrls])
-
-  const wordAnimation = {
-    hidden: {},
-    visible: {},
-  }
-
   const { scrollYProgress } = useScroll()
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
@@ -88,38 +65,11 @@ function Hero() {
           />
         </div>
         <div className="flex flex-col justify-between items-start md:mr-4 mr-2 w-1/2">
-          <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black">
+          <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black flex flex-col md:flex-row items-center gap-2">
             Hi, I'm
-            {text.split('').map((word, index) => {
-              return (
-                <motion.span
-                  className="text-orange-400"
-                  initial="hidden"
-                  key={index}
-                  animate={ctrls}
-                  variants={wordAnimation}
-                  ref={viewRef}
-                >
-                  {word.split('').map((char, index) => {
-                    return (
-                      <motion.span
-                        key={char + '-' + index}
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            delay: (1 + index) * 0.5,
-                          },
-                        }}
-                      >
-                        {char}
-                      </motion.span>
-                    )
-                  })}
-                </motion.span>
-              )
-            })}
+            <motion.span>
+              <img src={jake} className="h-64 w-64" />
+            </motion.span>
           </p>
           <motion.div
             className="flex md:items-center items-start justify-between gap-2 md:flex-row flex-col"
@@ -178,7 +128,7 @@ function Hero() {
           </form>
         </Modal.Body>
       </Modal>
-      <motion.div className="flex w-full h-screen items-start justify-center flex-col  bg-gradient-to-b from-indigo-600 to-indigo-900"></motion.div>
+      <motion.div className="flex w-full h-screen items-start justify-center flex-col  bg-gradient-to-b from-slate-600 to-slate-900"></motion.div>
     </div>
   )
 }

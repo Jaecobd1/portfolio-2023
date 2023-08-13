@@ -6,6 +6,7 @@ import christmas from '/christmas.png'
 import chatFish from '/chatFish.png'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+// import WordWrapAnimation from './WordWrapAnimation'
 function Portfolio() {
   const container = {
     hidden: {
@@ -34,7 +35,9 @@ function Portfolio() {
 
       <div className="bg-gradient-to-b from-indigo-900 to-slate-900 min-h-screen text-white">
         <div className="flex flex-col p-12 ">
-          <h2 className="md:text-4xl text-2xl mt-12">Portfolio</h2>
+          {/* <WordWrapAnimation word="Portfolio" length={-72.95} />
+           */}
+          <h3 className="text-6xl">Portfolio</h3>
           <span>
             Here are some projects I have worked on (Blog posts coming soon)
           </span>

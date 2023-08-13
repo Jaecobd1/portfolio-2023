@@ -83,6 +83,13 @@ function Nav() {
             >
               Summary
             </a>
+            <a
+              href="#about"
+              onClick={() => setSelected('about')}
+              className={selected === 'about' ? 'navLinkActive' : 'text-white'}
+            >
+              About
+            </a>
           </div>
           <div className="md:hidden flex mr-2 text-white">
             <AiOutlineMenu onClick={open} />

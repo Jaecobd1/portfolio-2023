@@ -3,6 +3,7 @@ import ivyTech from '/Ivy-tech.png'
 import iupui from '/iupui.png'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+// import WordWrapAnimation from './WordWrapAnimation'
 function Summary() {
   const [hovered, setHovered] = useState(-1)
   const [isHovering, setIsHovering] = useState(false)
@@ -61,8 +62,9 @@ function Summary() {
     <div id="summary" className="min-h-screen bg-slate-900 text-white p-12">
       {/* Insert Education Here */}
       <div className="flex flex-col gap-4">
-        <h2 className="text-6xl mt-12">Summary</h2>
+        {/* <WordWrapAnimation word="Summary" length={-7.95} /> */}
 
+        <h3 className="text-6xl">Summary</h3>
         <div className="flex flex-col">
           <h3 className="text-2xl">Education</h3>
           <div className="w-full flex justify-evenly md:flex-row flex-col gap-12 mt-24 items-center">
@@ -86,9 +88,6 @@ function Summary() {
                       ? 'one'
                       : 'further'
                     : 'default'
-                  // hovered !== index || hovered === -1
-                  //   ? 'otherHovered'
-                  //   : 'default'
                 }
               >
                 <h4 className="text-lg underline md:h-12">{school.school}</h4>
@@ -114,7 +113,7 @@ function Summary() {
                 </div>
                 <div className="flex items-center justify-center h-full flex-col">
                   <p className="text-xs text-slate-400">
-                    {school.year} {school.gpa && `| ${school.gpa}`}
+                    {school.gpa && ` GPA: ${school.gpa} `}
                   </p>
                   <p className="text-slate-400 ">{school.year}</p>
                 </div>

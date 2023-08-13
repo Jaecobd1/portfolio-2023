@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Nav from './components/Nav'
 import Portfolio from './components/Portfolio'
 import Summary from './components/Summary'
+import About from './components/About'
 function App() {
   return (
     <MantineProvider withNormalizeCSS>
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Portfolio />
       <Summary />
+      <About />
     </MantineProvider>
   )
 }

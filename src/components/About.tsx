@@ -2,6 +2,9 @@ import { useState } from 'react'
 // import WordWrapAnimation from './WordWrapAnimation'
 import useMousePosition from '../utils/useMousePosition'
 import { motion } from 'framer-motion'
+import snap from '/snap.png'
+import tiktok from '/tiktok.png'
+import { Avatar } from '@mantine/core'
 
 function About() {
   const { x, y } = useMousePosition()
@@ -15,8 +18,15 @@ function About() {
     >
       {/* <WordWrapAnimation word="About" length={-72.95} />
        */}
-      <h2 className="text-6xl p-12">About</h2>
-
+      <div className="flex">
+        <h2 className="text-6xl p-12">About</h2>
+        <Avatar
+          size="xl"
+          src="/me.png"
+          className="ml-auto mr-12 mt-12"
+          radius="xl"
+        />
+      </div>
       <div className="p-12 relative">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-slate-900 to-black opacity-50 p-12  ">
           <motion.div
@@ -126,6 +136,16 @@ function About() {
             from my musical pursuits to think outside the box and push the
             boundaries of my knowledge.
           </span>
+        </div>
+      </div>
+      <div className="p-12">
+        <h2 className="text-3xl">More</h2>
+        <div className="flex-col p-6">
+          <p>Sometimes, I make Snapchat and Tik Tok lenses</p>
+          <div className="md:flex-row flex flex-col gap-4 py-4">
+            <img src={snap} alt="snap" className="w-1/2 rounded-lg" />
+            <img src={tiktok} alt="snap2" className="w-1/2 rounded-lg" />
+          </div>
         </div>
       </div>
     </div>

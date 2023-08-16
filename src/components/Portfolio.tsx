@@ -6,6 +6,7 @@ import christmas from '/christmas.png'
 import chatFish from '/chatFish.png'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { LiaAwardSolid } from 'react-icons/lia'
 // import WordWrapAnimation from './WordWrapAnimation'
 function Portfolio() {
   const container = {
@@ -22,12 +23,29 @@ function Portfolio() {
   }
 
   const work = [
-    { name: 'Link Garden', image: linkGarden },
-    { name: 'Hall Aluminum Products', image: Hap },
+    {
+      name: 'Link Garden',
+      image: linkGarden,
+      link: 'https://link-garden.dobler.studio/garden/AnIH6DGQw3dLR35k66Y5Hjxq41K3',
+    },
+    {
+      name: 'Hall Aluminum Products',
+      image: Hap,
+      link: 'https://www.hallaluminum.com/',
+    },
     { name: 'Reusser Client Portal', image: clientPortal },
-    { name: '3D Christmas Card', image: christmas },
+    {
+      name: '3D Christmas Card',
+      image: christmas,
+      link: 'https://christmas.dobler.studio/',
+    },
 
-    { name: 'Chat Fish', image: chatFish },
+    {
+      name: 'Chat Fish',
+      image: chatFish,
+      link: 'https://catfish-alpha.vercel.app/',
+      award: true,
+    },
   ]
   return (
     <>
@@ -54,6 +72,8 @@ function Portfolio() {
                 index={index}
                 name={work.name}
                 image={work.image}
+                link={work.link}
+                isAward={work.award}
               />
             ))}
           </motion.div>
@@ -67,10 +87,14 @@ function WorkContainer({
   name,
   image,
   index,
+  link = null,
+  isAward = false,
 }: {
   name: string
   image: string
   index: number
+  link?: string | null
+  isAward?: boolean
 }) {
   const ref = useRef<HTMLLIElement>(null)
   const isInView = useInView(ref)
@@ -86,15 +110,25 @@ function WorkContainer({
         transitionDelay: `${index * 0.2}s`,
       }}
       key={index}
+      className="relative"
     >
       <Tooltip label="open">
-        <motion.div className="border-2 border-white flex  md:h-52 h- relative rounded-lg overflow-hidden">
-          <img src={image} alt={name} className="cover" />
-          <div className="absolute bottom-0 bg-slate-900/60 w-fit right-0 mx-auto px-2 left-0 text-white rounded-lg">
-            <h3 className="text-xl">{name}</h3>
-          </div>
-        </motion.div>
+        <a href={link} rel="noopener" target="_blank">
+          <motion.div className="border-2 border-white flex  md:h-52 h- relative rounded-lg overflow-hidden">
+            <img src={image} alt={name} className="cover" />
+            <div className="absolute bottom-0 bg-slate-900/60 w-fit right-0 mx-auto px-2 left-0 text-white rounded-lg">
+              <h3 className="text-xl">{name}</h3>
+            </div>
+          </motion.div>
+        </a>
       </Tooltip>
+      {isAward && (
+        <Tooltip label="Award Winning">
+          <div className="absolute bottom-0 right-0 p-4 text-2xl">
+            <LiaAwardSolid />
+          </div>
+        </Tooltip>
+      )}
     </motion.li>
   )
 }

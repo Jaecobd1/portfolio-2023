@@ -8,7 +8,9 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { LiaAwardSolid } from 'react-icons/lia'
 import apple from '/apple.png'
+import threeImage from '/threeImage.png'
 import portfolio from '/portfolio.png'
+import studyTimer from '/studyTimer.png'
 // import WordWrapAnimation from './WordWrapAnimation'
 function Portfolio() {
   const container = {
@@ -57,6 +59,16 @@ function Portfolio() {
       name: "Last Year's Portfolio",
       image: portfolio,
       link: 'https://jake.dobler.studio/',
+    },
+    {
+      name: 'Three JS Playground 2022',
+      image: threeImage,
+      link: 'https://three.dobler.studio/',
+    },
+    {
+      name: 'Study/Work Timer',
+      image: studyTimer,
+      link: 'https://timer.dobler.studio/',
     },
   ]
   return (
@@ -118,7 +130,7 @@ function WorkContainer({
         listStyle: 'none',
         transform: isInView ? 'translateY(-0)' : 'translateY(200px)',
         opacity: isInView ? 1 : 0,
-        transition: 'all 1.5s ease-in-out',
+        transition: 'all 1s ease-in-out',
         transitionDelay: `${index * 0.2}s`,
       }}
       key={index}
@@ -127,7 +139,7 @@ function WorkContainer({
       <Tooltip label="open">
         {link ? (
           <a href={link} rel="noopener" target="_blank">
-            <motion.div className="border-2 border-white flex  md:h-52 h- relative rounded-lg overflow-hidden">
+            <motion.div className="border-2 border-white flex  md:h-52  relative rounded-lg overflow-hidden">
               <img src={image} alt={name} className="cover" />
               <div className="absolute bottom-0 bg-slate-900/60 w-fit right-0 mx-auto px-2 left-0 text-white rounded-lg">
                 <h3 className="text-xl">{name}</h3>
@@ -135,7 +147,7 @@ function WorkContainer({
             </motion.div>
           </a>
         ) : (
-          <motion.div className="border-2 border-white flex  md:h-52 h- relative rounded-lg overflow-hidden">
+          <motion.div className="border-2 border-white flex  md:h-52  relative rounded-lg overflow-hidden">
             <img src={image} alt={name} className="cover" />
             <div className="absolute bottom-0 bg-slate-900/60 w-fit right-0 mx-auto px-2 left-0 text-white rounded-lg">
               <h3 className="text-xl">{name}</h3>

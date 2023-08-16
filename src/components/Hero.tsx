@@ -114,7 +114,7 @@ function Hero() {
           <p className="text-white text-4xl md:text-6xl xl:text-9xl font-black flex flex-col md:flex-row items-center gap-2">
             Hi, I'm
             <svg
-              className="h-64 w-64 fill-orange-400"
+              className="md:h-64 md:w-64 h-36 w-36 fill-orange-400"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 765.59 278.81"
             >

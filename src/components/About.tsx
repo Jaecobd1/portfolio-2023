@@ -140,11 +140,11 @@ function About() {
       </div>
       <div className="p-12">
         <h2 className="text-3xl">More</h2>
-        <div className="flex-col p-6">
+        <div className="flex-col p-6 ">
           <p>Sometimes, I make Snapchat and Tik Tok lenses</p>
-          <div className="md:flex-row flex flex-col gap-4 py-4">
-            <img src={snap} alt="snap" className="w-1/2 rounded-lg" />
-            <img src={tiktok} alt="snap2" className="w-1/2 rounded-lg" />
+          <div className="md:flex-row flex flex-col gap-4 py-4 ">
+            <img src={snap} alt="snap" className="md:w-1/2 rounded-lg" />
+            <img src={tiktok} alt="snap2" className="md:w-1/2 rounded-lg" />
           </div>
         </div>
       </div>

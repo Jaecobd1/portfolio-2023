@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Textarea } from '@mantine/core'
+import { Button, Input, Loader, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
   motion,
@@ -8,9 +8,15 @@ import {
 } from 'framer-motion'
 import { useRef, useState } from 'react'
 import HeroThreeJS from './HeroThreeJS'
+import { supabase } from '../utils/supabaseClient'
+import { toast } from 'react-hot-toast'
 
 function Hero() {
   const [scroll, setScroll] = useState<number>()
+  const [name, setName] = useState<string>()
+  const [email, setEmail] = useState<string>()
+  const [message, setMessage] = useState<string>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const languagesAndFrameworks = [
     { value: 'JavaScript', label: 'JavaScript' },
     { value: 'TypeScript', label: 'TypeScript' },
@@ -40,9 +46,6 @@ function Hero() {
   })
 
   const [opened, { open, close }] = useDisclosure(false)
-  const handleSubmit = () => {
-    close()
-  }
 
   const { scrollYProgress } = useScroll()
 
@@ -61,6 +64,37 @@ function Hero() {
         ease: 'easeInOut',
       },
     },
+  }
+  const emailregex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  async function sendContactForm() {
+    setIsLoading(true)
+    if (!name || !email || !message) {
+      toast.error('Please fill out all fields')
+      setIsLoading(false)
+      return
+    }
+
+    if (!emailregex.test(email)) {
+      toast.error('Please enter a valid email')
+      setIsLoading(false)
+      return
+    }
+
+    const { error } = await supabase
+      .from('contact')
+      .insert([{ name, email, message }])
+
+    if (error) {
+      toast.error('Error sending message' + error.message)
+      setIsLoading(false)
+      return
+    } else {
+      toast.success('Message sent successfully')
+      setIsLoading(false)
+      close()
+    }
   }
 
   return (
@@ -146,23 +180,43 @@ function Hero() {
           </motion.div>
         </div>
       </motion.div>
-      <Modal opened={opened} onClose={close} padding="md" size="md">
+      <Modal opened={opened} onClose={close} padding="md" size="md" centered>
         <Modal.Header>
-          <Modal.Title>Send a message</Modal.Title>
+          <Modal.Title className="text-2xl">Send a message</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form className="flex flex-col gap-4 ">
+          <form
+            className="flex flex-col gap-4 "
+            onSubmit={(e) => {
+              e.preventDefault()
+              sendContactForm()
+            }}
+          >
             <Input.Wrapper label="Name:">
-              <Input placeholder="Name" />
+              <Input
+                placeholder="Name"
+                onChange={(e) => setName(e.target.value)}
+              />
             </Input.Wrapper>
             <Input.Wrapper label="Email:">
-              <Input placeholder="jake@dobler.com" />
+              <Input
+                placeholder="jake@dobler.com"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Input.Wrapper>
             <Input.Wrapper label="Message:">
-              <Textarea placeholder="Message" />
+              <Textarea
+                placeholder="Message"
+                onChange={(e) => setMessage(e.target.value)}
+              />
             </Input.Wrapper>
-            <Button variant="outline" color="blue" onClick={handleSubmit}>
-              Send
+            <Button
+              variant="outline"
+              color="blue"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? <Loader /> : 'Send'}
             </Button>
           </form>
         </Modal.Body>

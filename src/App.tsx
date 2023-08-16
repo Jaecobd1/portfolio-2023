@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import Portfolio from './components/Portfolio'
 import Summary from './components/Summary'
 import About from './components/About'
+import { Toaster } from 'react-hot-toast'
 function App() {
   return (
     <MantineProvider withNormalizeCSS>
@@ -12,6 +13,7 @@ function App() {
       <Portfolio />
       <Summary />
       <About />
+      <Toaster />
     </MantineProvider>
   )
 }

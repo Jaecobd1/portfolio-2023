@@ -970,6 +970,11 @@
   dependencies:
     "@use-gesture/core" "10.2.27"
 
+"@vercel/analytics@^1.0.2":
+  "integrity" "sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg=="
+  "resolved" "https://registry.npmjs.org/@vercel/analytics/-/analytics-1.0.2.tgz"
+  "version" "1.0.2"
+
 "@vitejs/plugin-react@^4.0.3":
   "integrity" "sha512-pwXDog5nwwvSIzwrvYYmA2Ljcd/ZNlcsSG2Q9CNDBwnsd55UGAyr2doXtB5j+2uymRCnCfExlznzzSFbBRcoCg=="
   "resolved" "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-4.0.3.tgz"

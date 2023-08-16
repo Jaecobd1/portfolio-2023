@@ -200,7 +200,7 @@ function Hero() {
             </Input.Wrapper>
             <Input.Wrapper label="Email:">
               <Input
-                placeholder="jake@dobler.com"
+                placeholder="jaecob.d1@gmail.com"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Input.Wrapper>

@@ -7,6 +7,8 @@ import chatFish from '/chatFish.png'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { LiaAwardSolid } from 'react-icons/lia'
+import apple from '/apple.png'
+import portfolio from '/portfolio.png'
 // import WordWrapAnimation from './WordWrapAnimation'
 function Portfolio() {
   const container = {
@@ -45,6 +47,16 @@ function Portfolio() {
       image: chatFish,
       link: 'https://catfish-alpha.vercel.app/',
       award: true,
+    },
+    {
+      name: 'Apple Clone',
+      image: apple,
+      link: 'https://apple.dobler.studio/',
+    },
+    {
+      name: "Last Year's Portfolio",
+      image: portfolio,
+      link: 'https://jake.dobler.studio/',
     },
   ]
   return (
@@ -113,14 +125,23 @@ function WorkContainer({
       className="relative"
     >
       <Tooltip label="open">
-        <a href={link} rel="noopener" target="_blank">
+        {link ? (
+          <a href={link} rel="noopener" target="_blank">
+            <motion.div className="border-2 border-white flex  md:h-52 h- relative rounded-lg overflow-hidden">
+              <img src={image} alt={name} className="cover" />
+              <div className="absolute bottom-0 bg-slate-900/60 w-fit right-0 mx-auto px-2 left-0 text-white rounded-lg">
+                <h3 className="text-xl">{name}</h3>
+              </div>
+            </motion.div>
+          </a>
+        ) : (
           <motion.div className="border-2 border-white flex  md:h-52 h- relative rounded-lg overflow-hidden">
             <img src={image} alt={name} className="cover" />
             <div className="absolute bottom-0 bg-slate-900/60 w-fit right-0 mx-auto px-2 left-0 text-white rounded-lg">
               <h3 className="text-xl">{name}</h3>
             </div>
           </motion.div>
-        </a>
+        )}
       </Tooltip>
       {isAward && (
         <Tooltip label="Award Winning">

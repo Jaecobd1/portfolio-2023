@@ -1,4 +1,4 @@
-import { Tooltip } from '@mantine/core'
+import { Loader, Tooltip } from '@mantine/core'
 import linkGarden from '/link-garden.png'
 import Hap from '/Hap.png'
 import clientPortal from '/Client-Portal.png'
@@ -11,6 +11,7 @@ import apple from '/apple.png'
 import threeImage from '/threeImage.png'
 import portfolio from '/portfolio.png'
 import studyTimer from '/studyTimer.png'
+import doblerStudio from '/doblerStudio.png'
 // import WordWrapAnimation from './WordWrapAnimation'
 function Portfolio() {
   const container = {
@@ -70,6 +71,11 @@ function Portfolio() {
       image: studyTimer,
       link: 'https://timer.dobler.studio/',
     },
+    {
+      name: 'Dobler Studio',
+      image: doblerStudio,
+      inProgress: true,
+    },
   ]
   return (
     <>
@@ -98,6 +104,7 @@ function Portfolio() {
                 image={work.image}
                 link={work.link}
                 isAward={work.award}
+                inProgress={work.inProgress}
               />
             ))}
           </motion.div>
@@ -113,12 +120,14 @@ function WorkContainer({
   index,
   link = null,
   isAward = false,
+  inProgress = false,
 }: {
   name: string
   image: string
   index: number
   link?: string | null
   isAward?: boolean
+  inProgress?: boolean
 }) {
   const ref = useRef<HTMLLIElement>(null)
   const isInView = useInView(ref)
@@ -161,6 +170,12 @@ function WorkContainer({
             <LiaAwardSolid />
           </div>
         </Tooltip>
+      )}
+      {inProgress && (
+        <div className="absolute bottom-0 right-0 left-0 top-0 items-center justify-center bg-slate-500/30 w-full h-full text-2xl flex text-white gap-4">
+          In Progress
+          <Loader />
+        </div>
       )}
     </motion.li>
   )
